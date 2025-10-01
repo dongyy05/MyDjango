@@ -11,7 +11,6 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 
 from pathlib import Path
-
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -38,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'index',
+    'user',
 ]
 
 MIDDLEWARE = [
@@ -73,11 +73,45 @@ WSGI_APPLICATION = 'Mydjango.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
+# ssh_host="127.0.0.1"
+# ssh_port=22
+# ssh_user="root"
+# ssh_password="newlevel"
+# mysql_host="localhost"
+# mysql_port=3306
+# mysql_user="root"
+# mysql_password="newlevel"
+# mysql_db="shop"
+
+# def get_shh():
+#     server = open_tunnel(
+#         (ssh_host, ssh_port),
+#         ssh_username=ssh_user,
+#         ssh_password=ssh_password,
+#         remote_bind_address=(mysql_host, mysql_port)
+#     )
+#     server.start()
+#     return str(server.local_bind_port)
+    
 DATABASES = {
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.sqlite3',
+    #     'NAME': BASE_DIR / 'db.sqlite3',
+    # }
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'shop',  # 替换为你的数据库名称
+        'USER': 'root',  #
+        'PASSWORD': 'newlevel',
+        'HOST': '127.0.0.1',
+        'PORT': '3306',
+        'OPTIONS': {
+            'auth_plugin': 'caching_sha2_password',  # 添加这一行来指定认证插件
+            'read_default_file': str(BASE_DIR / 'my.cnf'),  # 可选：如果你有一个配置文件    
+        },
+        # 'PORT': get_shh(),
     }
+
 }
 
 
@@ -116,8 +150,15 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
 STATIC_URL = 'static/'
+STATICFILES_DIRS = [BASE_DIR / 'static',
+BASE_DIR / 'index/Mystatic']
+# 指定项目根目录下的 static 文件夹为静态文件目录
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'
+# 指定项目根目录下的 media 文件夹为媒体文件目录

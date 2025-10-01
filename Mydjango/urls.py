@@ -15,9 +15,16 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, re_path, include
 from index.views import index
+from django.conf import settings
+from django.views.static import serve
+
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', index),
+    # path('', index, name='index'),
+    re_path('media/(?P<path>.*)$', serve, {'document_root': settings.MEDIA_ROOT}, name='media'),  # 配置媒体文件的访问路径
+    path('', include(('index.urls','index'),namespace='index')),
+    path('user/', include(('user.urls', 'user'),namespace='user')),  # 添加这一行以包含 user 应用的 URL 配置
+
 ]
