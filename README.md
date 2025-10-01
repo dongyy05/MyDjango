@@ -1,5 +1,95 @@
 # 后端开发笔记
 
+## 项目说明
+
+此项目是在Ubuntu24.04.LTS，Python 3.10.18, Django 5.2下构建的，主要是记录学习Django5的进度和一些想法。
+
+## 前期环境搭建
+
+## 1️⃣ 检查 conda 是否安装正常
+
+```bash
+conda --version
+```
+
+能显示版本号（比如 `conda 24.7.1`），说明可用了。
+
+[^若未安装anaconda请用此命令安装：wget https://repo.anaconda.com/archive/Anaconda3-2024.06-1-Linux-x86_64.sh]:
+
+------
+
+## 2️⃣ 创建 Python 3.10 的虚拟环境
+
+命令格式：
+
+```bash
+conda create -n 环境名 python=3.10
+```
+
+例如创建一个名字叫 `py310` 的环境：
+
+```bash
+conda create -n py310 python=3.10
+```
+
+这里 `-n py310` 表示环境名，你也可以换成 `Dj` 或其他有意义的名字。
+
+------
+
+## 3️⃣ 激活环境
+
+```bash
+conda activate py310
+```
+
+终端提示符前会多一个 `(py310)`，表示已经进入虚拟环境。
+
+------
+
+## 4️⃣ 验证 Python 版本
+
+```bash
+python --version
+```
+
+应该输出：
+
+```bash
+Python 3.10.x
+```
+
+------
+
+## 5️⃣ 安装常用包（可选）
+
+```bash
+conda install django
+conda install mysqlclient
+```
+
+或者如果默认源没有，可以用 pip：
+
+```bash
+pip install django mysqlclient // 但最好不要conda&pip混用
+```
+
+------
+
+## 6️⃣ 退出环境
+
+```
+conda deactivate
+```
+
+## 创建项目
+
+在Terminal下利用conda创建一个Python3.10的虚拟环境
+
+```bash
+django-admin startproject MyDjango
+```
+
+
 - 要建立这种在 apps 目录下包含多个应用（如 basic、goods、order、users）的 Django 项目结构，可按照以下步骤操作：
 
 1. 准备 apps 目录
@@ -35,10 +125,6 @@ python manage.py startapp basic apps/basic
 python manage.py startapp order apps/order
 python manage.py startapp users apps/users
   ```
-
-  
-
-
 
 如果将应用（app）放在自定义的 apps 目录下，需要在 settings.py 中进行额外配置，确保 Django 能正确找到这些应用。具体配置方法如下：
 

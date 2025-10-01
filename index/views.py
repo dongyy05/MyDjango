@@ -4,12 +4,15 @@ from django.http import HttpResponse
 from django.urls import resolve,reverse
 
 def index(request):
-    kwargs={'year': 2010, 'month': 2, 'day': 3}
-    args=['2019', '12', '12']
-    print(reverse('index:mydate', args=args))
-    print(reverse('index:mydate', kwargs=kwargs))
+    # kwargs={'year': 2010, 'month': 2, 'day': 3}
+    # args=['2019', '12', '12']
+    # print(reverse('index:mydate', args=args))
+    # print(reverse('index:mydate', kwargs=kwargs))
+    # return redirect(reverse('index:mydate', args=args))
 
-    return redirect(reverse('index:mydate', args=args))
+    html = '<h1>Hello, Django!</h1>'
+    return HttpResponse(html, status=200)
+
 
 def indexView(request):
     c = ContentType.objects.values_list().all()
@@ -32,3 +35,4 @@ def mydate(request, year, month, day):
     print('app_name:', result.app_name)
 
     return HttpResponse(str(year)+"-"+str(month)+"-"+str(day))
+
