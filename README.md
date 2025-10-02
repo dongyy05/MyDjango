@@ -217,3 +217,66 @@ urlpatterns = [
 | **范围限制**（年份 2010–2025）        | ❌                                            | `re_path(r'^blog/(?P20(1[0-9]                              |
 | **手机号格式**                        | ❌                                            | `re_path(r'^phone/(?P1(3                                   |
 | **开头/结尾精确匹配**                 | ❌                                            | `re_path(r'^about$', views.about)`                         |
+
+## 📑 常见 Content-Type 对照表
+
+## 🔹 文本类型
+
+| 类型            | Content-Type 值          |
+| --------------- | ------------------------ |
+| HTML 网页       | `text/html`              |
+| 纯文本          | `text/plain`             |
+| CSS 样式表      | `text/css`               |
+| JavaScript 脚本 | `application/javascript` |
+| JSON 数据       | `application/json`       |
+| XML 数据        | `application/xml`        |
+
+------
+
+## 🔹 图片类型
+
+| 类型      | Content-Type 值 |
+| --------- | --------------- |
+| PNG 图片  | `image/png`     |
+| JPEG 图片 | `image/jpeg`    |
+| GIF 图片  | `image/gif`     |
+| SVG 图片  | `image/svg+xml` |
+| ICO 图标  | `image/x-icon`  |
+
+------
+
+## 🔹 文档类型
+
+| 类型                        | Content-Type 值                                              |
+| --------------------------- | ------------------------------------------------------------ |
+| PDF                         | `application/pdf`                                            |
+| Microsoft Word (doc)        | `application/msword`                                         |
+| Microsoft Word (docx)       | `application/vnd.openxmlformats-officedocument.wordprocessingml.document` |
+| Microsoft Excel (xls)       | `application/vnd.ms-excel`                                   |
+| Microsoft Excel (xlsx)      | `application/vnd.openxmlformats-officedocument.spreadsheetml.sheet` |
+| Microsoft PowerPoint (ppt)  | `application/vnd.ms-powerpoint`                              |
+| Microsoft PowerPoint (pptx) | `application/vnd.openxmlformats-officedocument.presentationml.presentation` |
+
+------
+
+## 🔹 压缩/二进制
+
+| 类型         | Content-Type 值               |
+| ------------ | ----------------------------- |
+| ZIP 压缩包   | `application/zip`             |
+| GZIP 压缩包  | `application/gzip`            |
+| RAR 压缩包   | `application/vnd.rar`         |
+| 7Z 压缩包    | `application/x-7z-compressed` |
+| 通用二进制流 | `application/octet-stream`    |
+
+------
+
+## 🔹 音视频类型
+
+| 类型      | Content-Type 值   |
+| --------- | ----------------- |
+| MP3 音频  | `audio/mpeg`      |
+| WAV 音频  | `audio/wav`       |
+| MP4 视频  | `video/mp4`       |
+| MPEG 视频 | `video/mpeg`      |
+| AVI 视频  | `video/x-msvideo` |

@@ -6,6 +6,13 @@ urlpatterns = [
     path('', views.index, name='index'),
     path('<year>/<int:month>/<slug:day>',views.mydate,name='mydate'),
     path('turnTo', RedirectView.as_view(url='/'),name='turnTo'), 
-    # path('', views.index2, {'month':'2019/10/10'}),
-    # re_path('(?P<year>[0-9]{4})/(?P<month>[0-9]{2})/(?P<day>[0-9]{2}).html',views.mydate, name='mydate'),
+    path('', views.index2, {'month':'2019/10/10'}),
+    re_path('(?P<year>[0-9]{4})/(?P<month>[0-9]{2})/(?P<day>[0-9]{2}).html',views.mydate, name='mydate'),
+    path('shop', views.shop, name='shop'),
+    path('download1/file1', views.download1, name='download1'),
+    path('download2/file2', views.download2, name='download2'),
+    path('download3/file3', views.download3, name='download3'),
+
 ]
+handler404 = 'index.views.page_not_found'
+handler500 = 'index.views.page_error'
